@@ -8,12 +8,15 @@ const Users = db.define(
   {
     nama: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     alamat: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     nomor: {
       type: DataTypes.STRING,
@@ -26,12 +29,15 @@ const Users = db.define(
     },
     aktif: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     refresh_token: {
       type: DataTypes.TEXT,
+      allowNull: true,
     },
   },
   {

@@ -123,6 +123,16 @@ export const verifyAply = async (req, res) => {
         metode_interview: metode_interview,
         hasilWawancara: hasilWawancara,
       });
+      const reqmsg = {
+        target: "082118161569",
+        message: `Anda dipanggil untuk interview pada tanggal ${tanggal_interview} dengan metode ${metode_interview}`,
+      };
+
+      const result = await axios.post("https://api.fonnte.com/send", reqmsg, {
+        headers: {
+          Authorization: "xaL@fa!LhsLkwxXtn!Zv",
+        },
+      });
       res.json({ message: "Verified" });
     } else {
       res.json({ message: "Aply not found" });
