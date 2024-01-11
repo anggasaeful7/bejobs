@@ -5,8 +5,78 @@ import jwt from "jsonwebtoken";
 
 export const getUsers = async (req, res) => {
   try {
-    const users = await Users.findAll({
-      attributes: ["id", "name", "email"],
+    const users = await Users.findAll();
+    res.json(users);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await Users.findAll({
+      where: {
+        id: id,
+      },
+    });
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createUsers = async (req, res) => {
+  try {
+    const { nama, email, alamat, nomor, password } = req.body;
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(password, salt);
+    const users = await Users.create({
+      nama,
+      email,
+      alamat,
+      nomor,
+      password: hashPassword,
+    });
+    res.json(users);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateUsers = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nama, email, alamat, nomor, password } = req.body;
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(password, salt);
+    const users = await Users.update(
+      {
+        nama,
+        email,
+        alamat,
+        nomor,
+        password: hashPassword,
+      },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+    res.json(users);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteUsers = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const users = await Users.destroy({
+      where: {
+        id: id,
+      },
     });
     res.json(users);
   } catch (error) {
@@ -103,7 +173,7 @@ export const Login = async (req, res) => {
     const match = await bcrypt.compare(req.body.password, user[0].password);
     if (!match) return res.status(400).json({ msg: "Wrong Password" });
     const userId = user[0].id;
-    const name = user[0].name;
+    const name = user[0].nama;
     const email = user[0].email;
     const aktif = user[0].aktif;
     const accessToken = jwt.sign(
