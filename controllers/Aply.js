@@ -39,10 +39,10 @@ export const getAplyById = async (req, res) => {
 
 export const createAply = async (req, res) => {
   try {
-    const { id_loker, id_user } = req.body;
+    const { id_loker, id_user, nama, nik, alamat, pendidikan, pengalaman, ktp, cv } = req.body;
     const aply = await Aply.create({
       id_loker,
-      id_user,
+      id_user,nama, nik, alamat, pendidikan, pengalaman, ktp, cv
     });
     if (aply) {
       res.json(aply);
