@@ -78,11 +78,7 @@ export const getAplyByIdInclude = async (req, res) => {
               model: Psikotes,
             },
           ],
-        },
-        {
-          model: Berkas,
-          as: "berkas",
-        },
+        }
       ],
     });
     if (aply) {
