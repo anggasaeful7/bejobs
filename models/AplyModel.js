@@ -16,6 +16,7 @@ const Aply = db.define(
       type: DataTypes.STRING,
       defaultValue: "Pending",
     },
+nama : , nik, alamat, pendidikan, pengalaman, ktp, cv
   },
   {
     freezeTableName: true,
