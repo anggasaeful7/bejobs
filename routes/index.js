@@ -87,7 +87,14 @@ router.get("/aply/:id", getAplyById);
 router.post("/aply/:id/verif", verifyAply);
 
 // Menu USer Aply Loker
-router.post("/aply", createAply);
+router.post(
+  "/aply",
+  upload.fields([
+    { name: "ktp", maxCount: 1 },
+    { name: "cv", maxCount: 1 },
+  ]),
+  createAply
+);
 router.get("/aply/show/:id", getAplyByIdInclude);
 
 // Menu Admin Kelola Interview
