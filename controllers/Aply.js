@@ -39,17 +39,10 @@ export const getAplyById = async (req, res) => {
 
 export const createAply = async (req, res) => {
   try {
-    const {
-      id_loker,
-      id_user,
-      nama,
-      nik,
-      alamat,
-      pendidikan,
-      pengalaman,
-      ktp,
-      cv,
-    } = req.body;
+    const { id_loker, id_user, nama, nik, alamat, pendidikan, pengalaman } =
+      req.body;
+    const uploadedFileName = req.files["ktp"][0].filename;
+    const uploadedFileName2 = req.files["cv"][0].filename;
     const aply = await Aply.create({
       id_loker,
       id_user,
@@ -58,8 +51,8 @@ export const createAply = async (req, res) => {
       alamat,
       pendidikan,
       pengalaman,
-      ktp,
-      cv,
+      ktp: uploadedFileName,
+      cv: uploadedFileName2,
     });
     if (aply) {
       res.json(aply);

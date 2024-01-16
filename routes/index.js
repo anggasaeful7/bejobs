@@ -72,7 +72,14 @@ router.post("/perusahaan", createPerusahaan);
 // Menu Admin Kelola Loker
 router.get("/loker", getLoker);
 router.get("/loker/:id", getLokerById);
-router.post("/loker", createLoker);
+router.post(
+  "/loker",
+  upload.fields([
+    { name: "ktp", maxCount: 1 },
+    { name: "cv", maxCount: 1 },
+  ]),
+  createLoker
+);
 
 // Menu Admin Kelola Aply
 router.get("/aply", getAply);
