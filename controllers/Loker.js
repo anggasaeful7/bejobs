@@ -1,8 +1,15 @@
 import Loker from "../models/LokerModel.js";
+import Perusahaan from "../models/PerusahaanModel.js";
 
 export const getLoker = async (req, res) => {
   try {
-    const loker = await Loker.findAll();
+    const loker = await Loker.findAll({
+            include: [ 
+             { 
+               model: Perusahaan, 
+             }, 
+           ],
+});
     if (loker) {
       res.json(loker);
     } else {
