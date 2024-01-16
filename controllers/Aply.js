@@ -56,7 +56,6 @@ export const createAply = async (req, res) => {
     });
     if (aply) {
       res.json(aply);
-      s;
     } else {
       res.json({ message: "Aply not found" });
     }
