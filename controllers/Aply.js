@@ -39,13 +39,31 @@ export const getAplyById = async (req, res) => {
 
 export const createAply = async (req, res) => {
   try {
-    const { id_loker, id_user, nama, nik, alamat, pendidikan, pengalaman, ktp, cv } = req.body;
+    const {
+      id_loker,
+      id_user,
+      nama,
+      nik,
+      alamat,
+      pendidikan,
+      pengalaman,
+      ktp,
+      cv,
+    } = req.body;
     const aply = await Aply.create({
       id_loker,
-      id_user,nama, nik, alamat, pendidikan, pengalaman, ktp, cv
+      id_user,
+      nama,
+      nik,
+      alamat,
+      pendidikan,
+      pengalaman,
+      ktp,
+      cv,
     });
     if (aply) {
       res.json(aply);
+      s;
     } else {
       res.json({ message: "Aply not found" });
     }
@@ -78,7 +96,7 @@ export const getAplyByIdInclude = async (req, res) => {
               model: Psikotes,
             },
           ],
-        }
+        },
       ],
     });
     if (aply) {

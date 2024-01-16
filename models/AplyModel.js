@@ -9,6 +9,27 @@ const Aply = db.define(
     id_loker: {
       type: DataTypes.INTEGER,
     },
+    nama: {
+      type: DataTypes.STRING,
+    },
+    nik: {
+      type: DataTypes.STRING,
+    },
+    alamat: {
+      type: DataTypes.STRING,
+    },
+    pendidikan: {
+      type: DataTypes.STRING,
+    },
+    pengalaman: {
+      type: DataTypes.STRING,
+    },
+    ktp: {
+      type: DataTypes.STRING,
+    },
+    cv: {
+      type: DataTypes.STRING,
+    },
     id_user: {
       type: DataTypes.INTEGER,
     },
@@ -16,7 +37,6 @@ const Aply = db.define(
       type: DataTypes.STRING,
       defaultValue: "Pending",
     },
-nama : , nik, alamat, pendidikan, pengalaman, ktp, cv
   },
   {
     freezeTableName: true,
