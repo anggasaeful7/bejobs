@@ -9,6 +9,9 @@ const Test = db.define(
     pertanyaan: {
       type: DataTypes.STRING,
     },
+    score: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     freezeTableName: true,

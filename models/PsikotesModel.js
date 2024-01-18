@@ -25,7 +25,4 @@ const Psikotes = db.define(
   }
 );
 
-Psikotes.hasOne(Test, { foreignKey: "id_test" });
-Test.belongsTo(Psikotes, { foreignKey: "id_test" });
-
 export default Psikotes;

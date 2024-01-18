@@ -38,6 +38,7 @@ import {
 import { createBerkas, getBerkas } from "../controllers/Berkas.js";
 import upload from "../middleware/Multer.js";
 import { createPsikotes, getTest } from "../controllers/Psikotes.js";
+import { createTest } from "../controllers/Test.js";
 
 const router = express.Router();
 
@@ -108,5 +109,7 @@ router.post("/berkas", upload.single("nama_berkas"), createBerkas);
 
 router.get("/test", getTest);
 router.post("/psikotes", createPsikotes);
+
+router.post("/test", createTest);
 
 export default router;
