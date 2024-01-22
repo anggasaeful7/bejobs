@@ -15,6 +15,9 @@ const Berkas = db.define(
     nama_berkas: {
       type: DataTypes.STRING,
     },
+    status: {
+      type: DataTypes.STRING,
+    },
   },
   {
     freezeTableName: true,

@@ -4,12 +4,12 @@ import Perusahaan from "../models/PerusahaanModel.js";
 export const getLoker = async (req, res) => {
   try {
     const loker = await Loker.findAll({
-            include: [ 
-             { 
-               model: Perusahaan, 
-             }, 
-           ],
-});
+      include: [
+        {
+          model: Perusahaan,
+        },
+      ],
+    });
     if (loker) {
       res.json(loker);
     } else {
@@ -27,6 +27,11 @@ export const getLokerById = async (req, res) => {
       where: {
         id: id,
       },
+      include: [
+        {
+          model: Perusahaan,
+        },
+      ],
     });
     if (loker) {
       res.json(loker);

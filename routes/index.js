@@ -35,7 +35,11 @@ import {
   getInterview,
   getInterviewById,
 } from "../controllers/Interview.js";
-import { createBerkas, getBerkas } from "../controllers/Berkas.js";
+import {
+  createBerkas,
+  getBerkas,
+  verifyBerkas,
+} from "../controllers/Berkas.js";
 import upload from "../middleware/Multer.js";
 import { createPsikotes, getTest } from "../controllers/Psikotes.js";
 import { createTest } from "../controllers/Test.js";
@@ -106,6 +110,7 @@ router.post("/interview", createInterview);
 // Berkas
 router.get("/berkas", getBerkas);
 router.post("/berkas", upload.single("nama_berkas"), createBerkas);
+router.post("/aply/:id/berkas", verifyBerkas);
 
 router.get("/test", getTest);
 router.post("/psikotes", createPsikotes);

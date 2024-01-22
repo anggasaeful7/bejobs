@@ -38,10 +38,11 @@ Psikotes.belongsTo(Interview, { foreignKey: "id_interview" });
 // Test.hasOne(Psikotes, { foreignKey: "id_test" });
 // Psikotes.belongsTo(Test, { foreignKey: "id_test" });
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);
+app.use("/dokumen", express.static("public/berkas"));
 
 Users.sync();
 Admin.sync();
